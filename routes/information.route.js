@@ -18,7 +18,7 @@ app.post('/SendInformation', [
          return true;
   }),
   body('location').matches(/^[a-zA-Z\s]+,\s*[a-zA-Z\s]+$/).withMessage('Location is invalid You Should enter your Country followed by & then your city'),
-  body('previousExperience').notEmpty().withMessage('Previous Experience is required'),
+  body('previousExperience').isNumeric().notEmpty().withMessage('Previous Experience in years is required'),
   body('DialedVertical').notEmpty().withMessage('Dialed Vertical is required'),
  
 ], 
