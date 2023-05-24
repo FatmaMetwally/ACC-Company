@@ -9,7 +9,7 @@ const ApplicantSchema= mongoose.Schema({
      age:Number,
      country:String,
      city:String,
-     previousExperience:String,
+     previousExperience:Number,
      DialedVertical:String,
    
 
