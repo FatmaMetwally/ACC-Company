@@ -2,8 +2,9 @@ const app = require('express').Router()
 const { body, validationResult } = require('express-validator');
 const ApplicantModel=require('../models/user.model')
 app.post('/SendInformation', [
-  body('chosenRole').trim().notEmpty().withMessage('Name is required'),
-  body('name').trim().notEmpty().withMessage('You Should Choose you are Individual or Owner'),
+  body('Iam_Individual').trim().notEmpty().withMessage('You Should Choose you are Individual or Owner'),
+  body('Iam_Owner_Of_CallCenter').trim().notEmpty().withMessage('You Should Choose you are Individual or Owner'),
+  body('name').trim().notEmpty().withMessage('Name is required'),
 
   body('email').trim().isEmail().withMessage('Invalid email address'),
   body('phone').isMobilePhone().withMessage('Phone number is invalid'),
@@ -26,7 +27,7 @@ app.post('/SendInformation', [
 
 async(req, res) => {
   try {
-    const {chosenRole,name,email,phone ,skype,age,location,previousExperience,DialedVertical}=req.body
+    const {Iam_Individual,Iam_Owner_Of_CallCenter,name,email,phone ,skype,age,location,previousExperience,DialedVertical}=req.body
     const [country,city] = req.body.location.split(',').map(part => part.trim())
    // Check for validation errors
    const errors = validationResult(req);
@@ -43,7 +44,7 @@ async(req, res) => {
          res.status(409).json({ message: "Email already exist" })
      }
      else{
-         await  ApplicantModel.insertMany({chosenRole,name,email,phone ,skype,age,country,city,previousExperience,DialedVertical})
+         await  ApplicantModel.insertMany({Iam_Individual,Iam_Owner_Of_CallCenter,name,email,phone ,skype,age,country,city,previousExperience,DialedVertical})
          res.status(200).json({message:"Your Appplication is send Successfully"})
      }
  
