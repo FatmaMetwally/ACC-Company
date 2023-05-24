@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const ApplicantSchema= mongoose.Schema({
-     chosenRole:String,
+     Iam_Individual:Boolean,
+     Iam_Owner_Of_CallCenter:Boolean,
      name:String,
      email:String,
      phone : String,
@@ -9,7 +10,8 @@ const ApplicantSchema= mongoose.Schema({
      country:String,
      city:String,
      previousExperience:String,
-     DialedVertical:String
+     DialedVertical:String,
+   
 
 })
 module.exports= mongoose.model('Applicant',ApplicantSchema)
